@@ -26,4 +26,5 @@ urlpatterns = [
     path('', views.calculator),
     path('evenodd/', views.evenoddprogram, name="evenodd"),
     path('mark/', views.marksheet, name="mark"),
+    path('website/', views.website),
 ]

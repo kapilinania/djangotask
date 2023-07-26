@@ -24,22 +24,21 @@ def calculator(request):
     return render(request, "index.html",{'c':c})
 
 def evenoddprogram(request):
-    c=''
-    try:
-        if request.method == "POST":
-            pass
-            data1 = eval(request.POST.get('num1'))
+    c = ''
 
-            if data1%2==0:
-                c="even"
-            else:
-                c="odd"
+    if request.method == "POST":
+        if request.POST.get('num1') =="":
+            return render(request, "evenodd.html", {'error': True})
 
-    except:
-        c = "Invalid Operation ...."
-        print(c)
+        data1 = eval(request.POST.get('num1'))
 
-    return render(request, "evenodd.html",{'c':c})
+        if data1 % 2 == 0:
+            c = "even"
+        else:
+            c = "odd"
+
+    print(c)
+    return render(request, "evenodd.html", {'c': c})
 
 def marksheet(request):
     total=''
@@ -74,3 +73,6 @@ def marksheet(request):
         print(c)
 
     return render(request, "marksheet.html", {'total':total, 'percent':percent, 'divison':divison})
+
+def website(request):
+    return render(request, "web.html")
